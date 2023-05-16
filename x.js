@@ -11,9 +11,17 @@ app.post('/', (req, res) => {
     var result = []
 
     given.map((item) => {
-        if (!mapItem.has(item.name)) {
-            mapItem.set(item.name, item)
-            result.push(item)
+
+
+        if (!mapItem.has(item.id)) {
+            mapItem.set(item.id, item)
+
+            const newItem = {
+                id: mapItem.size,
+                name: item.name
+            }
+
+            result.push(newItem)
         }
     })
 
